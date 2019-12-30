@@ -18,5 +18,25 @@
     <ClCompile Include="TIA.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TIAScore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Archetype.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TournamentRecord.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TIAScore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Archetype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TournamentRecord.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

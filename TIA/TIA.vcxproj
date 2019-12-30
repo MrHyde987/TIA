@@ -147,7 +147,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Archetype.cpp" />
     <ClCompile Include="TIA.cpp" />
+    <ClCompile Include="TIAScore.cpp" />
+    <ClCompile Include="TournamentRecord.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Archetype.h" />
+    <ClInclude Include="TIAScore.h" />
+    <ClInclude Include="TournamentRecord.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

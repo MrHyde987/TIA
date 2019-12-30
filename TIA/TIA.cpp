@@ -5,6 +5,17 @@
 
 int main()
 {
+    // Step 1: Load the archived state: L and old TIA
+
+    // Step 2: Load the new data: tournament results
+    // Step 2a: Interploate details if they aren't present
+    //          Simulate Swiss, Compute field L, etc.
+
+    // Step 3: Compute new state
+
+    // Step 4: Output new archive.
+
+
     std::cout << "Hello World!\n";
 }
 
