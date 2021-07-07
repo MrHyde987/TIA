@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TIA.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="TIAScore.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
