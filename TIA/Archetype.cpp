@@ -1,5 +1,11 @@
 #include "Archetype.h"
 
+// Should never be used
+Archetype::Archetype()
+{
+
+}
+
 Archetype::Archetype(std::string firstList, int key)
 {
 	associatedLists = std::vector<std::string>();

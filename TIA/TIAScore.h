@@ -9,6 +9,7 @@ private:
 
 public:
 	TIAScore();
+	~TIAScore();
 
 	double ComputeTIA(const double timeFactor) const;
 

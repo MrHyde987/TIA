@@ -17,6 +17,8 @@ private:
 	int                      key;
 
 public:
+	Archetype();
+	
 	Archetype(std::string firstList, int key);
 	
 	void AddList(const std::string newList);

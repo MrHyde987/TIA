@@ -5,7 +5,7 @@ TIAScore::TIAScore()
 	scores = new std::vector<double>();
 }
 
-TIAScore::TIAScore()
+TIAScore::~TIAScore()
 {
 	delete scores;
 }

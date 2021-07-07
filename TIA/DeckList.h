@@ -14,5 +14,8 @@ private:
 public:
 	DeckList(const std::string& ponyHeadUrl);
 
+	// Consider this interface (for now this function only exists to enable testing)
+	const CardRecord& getCardRecord(int idx) const;
+
 };
 

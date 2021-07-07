@@ -26,3 +26,8 @@ DeckList::DeckList(const std::string& ponyHeadUrl)
 
 	parseUrl(ponyHeadUrl);
 }
+
+const CardRecord& DeckList::getCardRecord(int idx) const
+{
+	return cardsInDeck[idx];
+}
