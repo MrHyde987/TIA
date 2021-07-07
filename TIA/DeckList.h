@@ -17,5 +17,8 @@ public:
 	// Consider this interface (for now this function only exists to enable testing)
 	const CardRecord& getCardRecord(int idx) const;
 
+	const int getNumCardsInDeck() const;
+	const int getNumUniqueCardsInDeck() const;
+
 };
 

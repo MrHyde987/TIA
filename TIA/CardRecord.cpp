@@ -41,39 +41,39 @@ CardRecord::CardRecord(std::string ponyheadCardSegment)
 
 Set CardRecord::translateSetId(std::string setIdStr)
 {
-	if (setIdStr.compare("PR") == 0)
+	if (setIdStr.compare("pr") == 0)
 		return Set::PR;
-	else if (setIdStr.compare("CN") == 0)
+	else if (setIdStr.compare("cn") == 0)
 		return Set::CN;
-	else if (setIdStr.compare("CG") == 0)
+	else if (setIdStr.compare("cg") == 0)
 		return Set::CG;
-	else if (setIdStr.compare("AD") == 0)
+	else if (setIdStr.compare("ad") == 0)
 		return Set::AD;
-	else if (setIdStr.compare("EO") == 0)
+	else if (setIdStr.compare("eo") == 0)
 		return Set::EO;
-	else if (setIdStr.compare("HM") == 0)
+	else if (setIdStr.compare("hm") == 0)
 		return Set::HM;
-	else if (setIdStr.compare("MT") == 0)
+	else if (setIdStr.compare("mt") == 0)
 		return Set::MT;
-	else if (setIdStr.compare("DE") == 0)
+	else if (setIdStr.compare("de") == 0)
 		return Set::DE;
-	else if (setIdStr.compare("SB") == 0)
+	else if (setIdStr.compare("sb") == 0)
 		return Set::SB;
-	else if (setIdStr.compare("FF") == 0)
+	else if (setIdStr.compare("ff") == 0)
 		return Set::FF;
-	else if (setIdStr.compare("LL") == 0)
+	else if (setIdStr.compare("ll") == 0)
 		return Set::LL;
-	else if (setIdStr.compare("ND") == 0)
+	else if (setIdStr.compare("nd") == 0)
 		return Set::ND;
-	else if (setIdStr.compare("FM") == 0)
+	else if (setIdStr.compare("fm") == 0)
 		return Set::FM;
-	else if (setIdStr.compare("RR") == 0)
+	else if (setIdStr.compare("rr") == 0)
 		return Set::RR;
-	else if (setIdStr.compare("CS") == 0)
+	else if (setIdStr.compare("cs") == 0)
 		return Set::CS;
-	else if (setIdStr.compare("ST") == 0)
+	else if (setIdStr.compare("st") == 0)
 		return Set::ST;
-	else if (setIdStr.compare("GF") == 0)
+	else if (setIdStr.compare("gf") == 0)
 		return Set::GF;
 	else
 		throw std::invalid_argument(setIdStr);
