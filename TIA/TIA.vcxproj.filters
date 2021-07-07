@@ -27,6 +27,12 @@
     <ClCompile Include="TournamentRecord.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DeckList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CardRecord.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TIAScore.h">
@@ -36,6 +42,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TournamentRecord.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DeckList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CardRecord.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

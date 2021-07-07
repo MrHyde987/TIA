@@ -4,7 +4,7 @@
 
 #include "TIAScore.h"
 
-// An Archetype holds all of the information associated with a single archtype.
+// An Archetype holds all of the information associated with a single archetype.
 // The decklists associated with it, its current L-Score, and a unique key used
 // in the matching system to streamline it.
 
