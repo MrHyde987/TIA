@@ -26,9 +26,11 @@ CardRecord::CardRecord(std::string ponyheadCardSegment)
 
 	int cardIdLength = xLocation - 2;
 
-	if (ponyheadCardSegment[2] == 'n')
+	if (ponyheadCardSegment[2] == 'n' || 
+		ponyheadCardSegment[2] == 'f' ||
+		ponyheadCardSegment[2] == 'F')
 	{
-		// Special case for cards with negative Id's
+		// Special case for cards with negative Id's and miniset Manes
 		id = std::stoi(ponyheadCardSegment.substr(3, cardIdLength - 1));
 	}
 	else
