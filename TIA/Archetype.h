@@ -12,19 +12,23 @@
 class Archetype
 {
 private:
-	std::vector<std::string> associatedLists;
-	double                   lScore;
-	int                      key;
+	std::string         name;
+	std::pair<int, int> record;
+	std::vector<float>  tiaArchive;
+	std::string         associatedDeckList;
+	int                 key;
+
+	static int keyCounter;
+
+	static int generateNewKey();
 
 public:
 	Archetype();
 	
-	Archetype(std::string firstList, int key);
+	Archetype(std::string name, std::pair<int, int> record, std::vector<float> tiaArchive, std::string associatedList);
 	
-	void AddList(const std::string newList);
-	std::vector<std::string> const& GetLists() const;
-
-	void AssignL(const double newL);
+	void ReplaceList(const std::string newList);
+	std::string const& GetList() const;
 
 	int GetKey() const;
 };

@@ -1,32 +1,36 @@
 #include "Archetype.h"
 
+// Initializing static member
+int Archetype::keyCounter = 0;
+
+int Archetype::generateNewKey()
+{
+	return keyCounter++;
+}
+
 // Should never be used
 Archetype::Archetype()
 {
 
 }
 
-Archetype::Archetype(std::string firstList, int key)
+Archetype::Archetype(std::string name, std::pair<int, int> record, std::vector<float> tiaArchive, std::string associatedList)
 {
-	associatedLists = std::vector<std::string>();
-	associatedLists.push_back(firstList);
-	lScore = 1.0;
-	this->key = key;
+	this->name = name;
+	this->record = std::pair<int, int>(record);
+	this->tiaArchive = std::vector<float>(tiaArchive);
+	this->associatedDeckList = associatedList;
+	this->key = generateNewKey();
 }
 
-void Archetype::AddList(const std::string newList)
+void Archetype::ReplaceList(const std::string newList)
 {
-	associatedLists.push_back(newList);
+	this->associatedDeckList = newList;
 }
 
-std::vector<std::string> const& Archetype::GetLists() const
+std::string const& Archetype::GetList() const
 {
-	return associatedLists;
-}
-
-void Archetype::AssignL(const double newL)
-{
-	lScore = newL;
+	return associatedDeckList;
 }
 
 int Archetype::GetKey() const

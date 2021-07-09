@@ -3,6 +3,9 @@
 
 #include "StateReader.h"
 
+// Initialize static member
+std::ifstream StateReader::stateFile = std::ifstream();
+
 // Example Archetype Yaml format:
 // name: "LLTwi Orange Event Aggro"
 // wins: #
@@ -45,8 +48,7 @@ void StateReader::ProcessArchetype(std::vector<Archetype>& archetypes)
 	std::getline(stateFile, nextLine);
 	std::string associatedList = nextLine.substr(nextLine.find(':') + 2);
 
-	// TODO: The Archetype class needs to change to accommodate these fields
-	archetypes.push_back(Archetype());
+	archetypes.push_back(Archetype(name, std::pair<int, int>(wins, losses), tias, associatedList));
 }
 
 void StateReader::ReadState(std::vector<Archetype>& archetypes, std::string file)

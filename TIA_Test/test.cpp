@@ -1,8 +1,10 @@
 #include "pch.h"
 
 #include "../TIA/DeckList.h"
+#include "../TIA/StateReader.h"
 
-TEST(DeckListParsing, ParseNormalList) {
+TEST(DeckListParsing, ParseNormalList)
+{
 	DeckList test = DeckList("http://ponyhead.com/deckbuilder?v1code=ff1x1-ll49x1-nd40x1-de56x1-ll55x1-ll56x1-ff127x1-nd131x1");
 
 	EXPECT_EQ(test.getNumUniqueCardsInDeck(), 8);
@@ -21,7 +23,8 @@ TEST(DeckListParsing, ParseNormalList) {
 	EXPECT_EQ(testRecord2.getMultiplicity(), 1);
 }
 
-TEST(DeckListParsing, SetRecognition) {
+TEST(DeckListParsing, SetRecognition) 
+{
 	DeckList test = DeckList("http://ponyhead.com/deckbuilder?draftMode&v1code=pr1x1-cn1x1-cg191x1-ad2x1-eo1x1-hm139x1-st1x1-mt1x1-de1x1-sb1x1-ff1x1-ll1x1-nd1x1-cs1x1-rr1x1-gf7x1");
 
 	const CardRecord& testRecord1 = test.getCardRecord(0);
@@ -73,7 +76,8 @@ TEST(DeckListParsing, SetRecognition) {
 	EXPECT_EQ(testRecord16.getSet(), Set::GF);
 }
 
-TEST(DeckListParsing, Multiplicity) {
+TEST(DeckListParsing, Multiplicity) 
+{
 	DeckList test = DeckList("http://ponyhead.com/deckbuilder?draftMode&v1code=eo204x1-eo205x2-eo206x3-eo207x4-eo208x5-eo209x6");
 
 	const CardRecord& testRecord1 = test.getCardRecord(0);
@@ -95,7 +99,8 @@ TEST(DeckListParsing, Multiplicity) {
 	EXPECT_EQ(testRecord6.getMultiplicity(), 6);
 }
 
-TEST(DeckListParsing, SpecialCardIds) {
+TEST(DeckListParsing, SpecialCardIds) 
+{
 	DeckList test = DeckList("http://ponyhead.com/deckbuilder?v1code=rrF1x1-rr1x1-rrF2x1-rr2x1-csf1x1");
 
 	EXPECT_EQ(test.getNumUniqueCardsInDeck(), 5);
@@ -114,4 +119,14 @@ TEST(DeckListParsing, SpecialCardIds) {
 
 	const CardRecord& testRecord5 = test.getCardRecord(4);
 	EXPECT_EQ(testRecord5.getSet(), Set::CS);
+}
+
+TEST(YamlParsing, NormalYaml) 
+{
+	std::vector<Archetype> testArchetypes = std::vector<Archetype>();
+
+	StateReader::ReadState(testArchetypes, "F:\\Documents\\Personal Code Projects\\TIA_Automation\\Test_Archive.yml");
+
+	EXPECT_EQ(testArchetypes[0].GetList(), "<Ponyhead URL>");
+	EXPECT_EQ(testArchetypes[1].GetList(), "<Ponyhead URL2>");
 }
