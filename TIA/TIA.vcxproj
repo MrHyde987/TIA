@@ -152,6 +152,7 @@
     <ClCompile Include="Archetype.cpp" />
     <ClCompile Include="CardRecord.cpp" />
     <ClCompile Include="DeckList.cpp" />
+    <ClCompile Include="StateReader.cpp" />
     <ClCompile Include="TIAScore.cpp" />
     <ClCompile Include="TournamentRecord.cpp" />
   </ItemGroup>
@@ -159,6 +160,7 @@
     <ClInclude Include="Archetype.h" />
     <ClInclude Include="CardRecord.h" />
     <ClInclude Include="DeckList.h" />
+    <ClInclude Include="StateReader.h" />
     <ClInclude Include="TIAScore.h" />
     <ClInclude Include="TournamentRecord.h" />
   </ItemGroup>
