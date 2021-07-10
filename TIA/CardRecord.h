@@ -25,21 +25,31 @@ enum Set
 	GF  // Promotional
 };
 
+enum SpecialId
+{
+	NONE,      // Normal cards
+	NEGATIVE,  // Secret Rares
+	SPECIAL,   // Manes from RR and CS
+	PROMO_FOIL // Specail promo cards from earlier sets
+};
+
 class CardRecord
 {
 private:
 	Set set;
+	SpecialId idStatus;
 	int id;
 	int multiplicity;
 
 	Set translateSetId(std::string setIdStr);
 
 public:
-	CardRecord(Set set, int id, int multiplicity);
+	CardRecord(Set set, SpecialId idStatus, int id, int multiplicity);
 	CardRecord(std::string ponyheadCardSegment);
 
 	const Set getSet() const;
 	const int getId() const;
 	const int getMultiplicity() const;
+	const SpecialId getSpecialId() const;
 };
 

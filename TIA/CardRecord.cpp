@@ -2,9 +2,10 @@
 
 #include <stdexcept>
 
-CardRecord::CardRecord(Set set, int id, int multiplicity)
+CardRecord::CardRecord(Set set, SpecialId idStatus, int id, int multiplicity)
 {
 	this->set = set;
+	this->idStatus = idStatus;
 	this->id = id;
 	this->multiplicity = multiplicity;
 }
@@ -26,16 +27,28 @@ CardRecord::CardRecord(std::string ponyheadCardSegment)
 
 	int cardIdLength = xLocation - 2;
 
-	if (ponyheadCardSegment[2] == 'n' || 
-		ponyheadCardSegment[2] == 'f' ||
-		ponyheadCardSegment[2] == 'F')
+	if (ponyheadCardSegment[2] == 'n')
 	{
-		// Special case for cards with negative Id's and miniset Manes
+		// Special case for cards with negative Id's ("n#x#")
 		id = std::stoi(ponyheadCardSegment.substr(3, cardIdLength - 1));
+		idStatus = SpecialId::NEGATIVE;
+	}
+	else if (ponyheadCardSegment[2] == 'f' || ponyheadCardSegment[2] == 'F')
+	{
+		// Manes from RR and CS have the form "f#x1" (sometimes 'F')
+		id = std::stoi(ponyheadCardSegment.substr(3, cardIdLength - 1));
+		idStatus = SpecialId::SPECIAL;
+	}
+	else if (ponyheadCardSegment[2] == 'p' || ponyheadCardSegment[2] == 'P')
+	{
+		// Promo foil cards from Premier block ("pf##x#"), or sometimes "PF"
+		id = std::stoi(ponyheadCardSegment.substr(4, cardIdLength - 2));
+		idStatus = SpecialId::PROMO_FOIL;
 	}
 	else
 	{
 		id = std::stoi(ponyheadCardSegment.substr(2, cardIdLength));
+		idStatus = SpecialId::NONE;
 	}
 
 	multiplicity = std::stoi(ponyheadCardSegment.substr(xLocation + 1, ponyheadCardSegment.length() - xLocation));
@@ -94,4 +107,9 @@ const int CardRecord::getId() const
 const int CardRecord::getMultiplicity() const
 {
 	return this->multiplicity;
+}
+
+const SpecialId CardRecord::getSpecialId() const
+{
+	return this->idStatus;
 }

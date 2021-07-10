@@ -101,24 +101,37 @@ TEST(DeckListParsing, Multiplicity)
 
 TEST(DeckListParsing, SpecialCardIds) 
 {
-	DeckList test = DeckList("http://ponyhead.com/deckbuilder?v1code=rrF1x1-rr1x1-rrF2x1-rr2x1-csf1x1");
+	DeckList test = DeckList("http://ponyhead.com/deckbuilder?v1code=rrF1x1-rr1x1-cnPF3x1-cn3x1-csf1x1-adn1x1-ad1x1");
 
-	EXPECT_EQ(test.getNumUniqueCardsInDeck(), 5);
+	EXPECT_EQ(test.getNumUniqueCardsInDeck(), 7);
 
 	const CardRecord& testRecord1 = test.getCardRecord(0);
 	EXPECT_EQ(testRecord1.getSet(), Set::RR);
+	EXPECT_EQ(testRecord1.getSpecialId(), SpecialId::SPECIAL);
 
 	const CardRecord& testRecord2 = test.getCardRecord(1);
 	EXPECT_EQ(testRecord2.getSet(), Set::RR);
+	EXPECT_EQ(testRecord2.getSpecialId(), SpecialId::NONE);
 
 	const CardRecord& testRecord3 = test.getCardRecord(2);
-	EXPECT_EQ(testRecord3.getSet(), Set::RR);
+	EXPECT_EQ(testRecord3.getSet(), Set::CN);
+	EXPECT_EQ(testRecord3.getSpecialId(), SpecialId::PROMO_FOIL);
 
 	const CardRecord& testRecord4 = test.getCardRecord(3);
-	EXPECT_EQ(testRecord4.getSet(), Set::RR);
+	EXPECT_EQ(testRecord4.getSet(), Set::CN);
+	EXPECT_EQ(testRecord4.getSpecialId(), SpecialId::NONE);
 
 	const CardRecord& testRecord5 = test.getCardRecord(4);
 	EXPECT_EQ(testRecord5.getSet(), Set::CS);
+	EXPECT_EQ(testRecord5.getSpecialId(), SpecialId::SPECIAL);
+
+	const CardRecord& testRecord6 = test.getCardRecord(5);
+	EXPECT_EQ(testRecord6.getSet(), Set::AD);
+	EXPECT_EQ(testRecord6.getSpecialId(), SpecialId::NEGATIVE);
+
+	const CardRecord& testRecord7 = test.getCardRecord(6);
+	EXPECT_EQ(testRecord7.getSet(), Set::AD);
+	EXPECT_EQ(testRecord7.getSpecialId(), SpecialId::NONE);
 }
 
 TEST(YamlParsing, NormalYaml) 
