@@ -1,4 +1,5 @@
 
+#include <unordered_map>
 #include <string>
 #include <vector>
 
@@ -22,12 +23,14 @@ private:
 	std::vector<float>  tiaArchive;
 
 	static int keyCounter;
+	static std::unordered_map<std::string, int> nameIndex;
 
-	static int generateNewKey();
+	static int generateNewKey(std::string name);
 
 public:
 	Archetype();
 	
+	// Constructor used for historic archetypes
 	Archetype(std::string name, std::pair<int, int> record, std::vector<float> tiaArchive, std::string associatedList);
 	
 	void ReplaceList(const std::string newList);

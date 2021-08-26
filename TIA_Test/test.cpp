@@ -156,3 +156,15 @@ TEST(YamlParsing, NewTourneyData)
 		EXPECT_EQ(newTias[i], 0.0f);
 	}
 }
+
+TEST(YamlParsing, ArchetypeRecognition)
+{
+	std::vector<Archetype> historicArchetypes = std::vector<Archetype>();
+	std::vector<Archetype> newArchetypes = std::vector<Archetype>();
+
+	StateReader::ReadState(historicArchetypes, false, "F:\\Documents\\Personal Code Projects\\TIA_Automation\\Test_Archive.yml");
+	StateReader::ReadState(newArchetypes, true, "F:\\Documents\\Personal Code Projects\\TIA_Automation\\New_Archive.yml");
+
+	EXPECT_EQ(historicArchetypes[0].GetKey(), newArchetypes[0].GetKey());
+	EXPECT_EQ(historicArchetypes[1].GetKey(), newArchetypes[1].GetKey());
+}

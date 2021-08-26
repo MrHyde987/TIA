@@ -2,10 +2,14 @@
 
 // Initializing static member
 int Archetype::keyCounter = 0;
+std::unordered_map<std::string, int> Archetype::nameIndex = std::unordered_map<std::string, int>();
 
-int Archetype::generateNewKey()
+int Archetype::generateNewKey(std::string name)
 {
-	return keyCounter++;
+	keyCounter++;
+	nameIndex.insert(std::pair<std::string, int>(name, keyCounter));
+
+	return keyCounter;
 }
 
 // Should never be used
@@ -20,7 +24,11 @@ Archetype::Archetype(std::string name, std::pair<int, int> record, std::vector<f
 	this->record = std::pair<int, int>(record);
 	this->tiaArchive = std::vector<float>(tiaArchive);
 	this->associatedDeckList = associatedList;
-	this->key = generateNewKey();
+
+	if (nameIndex.count(name) > 0)
+		this->key = nameIndex[name];
+	else
+		this->key = generateNewKey(name);
 }
 
 void Archetype::ReplaceList(const std::string newList)
