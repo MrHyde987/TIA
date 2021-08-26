@@ -33,6 +33,11 @@ std::string const& Archetype::GetList() const
 	return associatedDeckList;
 }
 
+std::vector<float> const& Archetype::GetTias() const
+{
+	return tiaArchive;
+}
+
 int Archetype::GetKey() const
 {
 	return key;

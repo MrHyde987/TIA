@@ -13,9 +13,9 @@ class StateReader
 private:
 	static std::ifstream stateFile;
 
-	static void ProcessArchetype(std::vector<Archetype>& archetypes);
+	static void ProcessArchetype(std::vector<Archetype>& archetypes, bool isNew);
 
 public:
-	static void ReadState(std::vector<Archetype>& archetypes, std::string file);
+	static void ReadState(std::vector<Archetype>& archetypes, bool isNew, std::string file);
 };
 

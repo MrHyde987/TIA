@@ -138,8 +138,21 @@ TEST(YamlParsing, NormalYaml)
 {
 	std::vector<Archetype> testArchetypes = std::vector<Archetype>();
 
-	StateReader::ReadState(testArchetypes, "F:\\Documents\\Personal Code Projects\\TIA_Automation\\Test_Archive.yml");
+	StateReader::ReadState(testArchetypes, false, "F:\\Documents\\Personal Code Projects\\TIA_Automation\\Test_Archive.yml");
 
 	EXPECT_EQ(testArchetypes[0].GetList(), "<Ponyhead URL>");
 	EXPECT_EQ(testArchetypes[1].GetList(), "<Ponyhead URL2>");
+}
+
+TEST(YamlParsing, NewTourneyData)
+{
+	std::vector<Archetype> newArchetypes = std::vector<Archetype>();
+
+	StateReader::ReadState(newArchetypes, true, "F:\\Documents\\Personal Code Projects\\TIA_Automation\\New_Archive.yml");
+
+	std::vector<float> newTias = newArchetypes[0].GetTias();
+	for (int i = 0; i < newTias.size(); ++i)
+	{
+		EXPECT_EQ(newTias[i], 0.0f);
+	}
 }

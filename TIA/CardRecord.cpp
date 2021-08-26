@@ -12,9 +12,11 @@ CardRecord::CardRecord(Set set, SpecialId idStatus, int id, int multiplicity)
 
 CardRecord::CardRecord(std::string ponyheadCardSegment)
 {
-	// ponyhead card segements have the form [SS(n)#x#]
+	// ponyhead card segements have the form [SS(<n,f,pf>)#x#]
 	// The first two characters are the set id
-	// There will be an 'n' if the card id is negative
+	//     There will be an 'n' if the card id is negative
+	// 	   There will be an 'f' for Manes in RR and CS
+	// 	   There will be a 'pf' for Promo Foil cards
 	// The next 1-3 characters are the card num
 	// There is always an 'x' next
 	// The last number is a multiplicity (PH supports it being 1-9999)

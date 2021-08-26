@@ -30,7 +30,7 @@ enum SpecialId
 	NONE,      // Normal cards
 	NEGATIVE,  // Secret Rares
 	SPECIAL,   // Manes from RR and CS
-	PROMO_FOIL // Specail promo cards from earlier sets
+	PROMO_FOIL // Special promo cards from earlier sets
 };
 
 class CardRecord
