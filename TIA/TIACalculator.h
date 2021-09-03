@@ -3,14 +3,15 @@
 #include <map>
 
 #include "Archetype.h"
-#include "StateReader.h"
+#include "DataReader.h"
+#include "Update.h"
 
 // Main class for managing state and coordinating other operations
 class TIACalculator
 {
 private:
 	std::vector<Archetype> historicArchetypes;
-	std::vector<Archetype> newArchetypeData;
+	std::vector<Update> newArchetypeData;
 	std::map<int, int> lScores;
 
 	std::string historicDataLocation;

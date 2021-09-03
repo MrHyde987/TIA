@@ -1,7 +1,7 @@
 #include "pch.h"
 
 #include "../TIA/DeckList.h"
-#include "../TIA/StateReader.h"
+#include "../TIA/DataReader.h"
 
 TEST(DeckListParsing, ParseNormalList)
 {
@@ -138,7 +138,7 @@ TEST(YamlParsing, NormalYaml)
 {
 	std::vector<Archetype> testArchetypes = std::vector<Archetype>();
 
-	StateReader::ReadState(testArchetypes, false, "F:\\Documents\\Personal Code Projects\\TIA_Automation\\Test_Archive.yml");
+	DataReader::ReadState(testArchetypes, "F:\\Documents\\Personal Code Projects\\TIA_Automation\\Test_Archive.yml");
 
 	EXPECT_EQ(testArchetypes[0].GetList(), "<Ponyhead URL>");
 	EXPECT_EQ(testArchetypes[1].GetList(), "<Ponyhead URL2>");
@@ -146,25 +146,38 @@ TEST(YamlParsing, NormalYaml)
 
 TEST(YamlParsing, NewTourneyData)
 {
-	std::vector<Archetype> newArchetypes = std::vector<Archetype>();
+	std::vector<Update> newUpdates = std::vector<Update>();
 
-	StateReader::ReadState(newArchetypes, true, "F:\\Documents\\Personal Code Projects\\TIA_Automation\\New_Archive.yml");
+	DataReader::ReadUpdateFile(newUpdates, "F:\\Documents\\Personal Code Projects\\TIA_Automation\\New_Archive.yml");
 
-	std::vector<float> newTias = newArchetypes[0].GetTias();
-	for (int i = 0; i < newTias.size(); ++i)
-	{
-		EXPECT_EQ(newTias[i], 0.0f);
-	}
+	EXPECT_EQ(newUpdates.size(), 3);
+
+	std::vector<std::pair<bool, int>> newRecords = newUpdates[0].GetSchedule();
+	
+	// For now just spot-check a few value here
+	EXPECT_EQ(newRecords.size(), 5);
+	EXPECT_EQ(newRecords[0].first, true);
+	EXPECT_EQ(newRecords[0].second, 2);
+
+	EXPECT_EQ(newRecords[2].first, false);
+	EXPECT_EQ(newRecords[4].second, 3);
+
+	newRecords = newUpdates[1].GetSchedule();
+	EXPECT_EQ(newRecords.size(), 0);
+
+	std::pair<int, int> winLoss = newUpdates[2].GetRecord();
+	EXPECT_EQ(winLoss.first, 0);
+	EXPECT_EQ(winLoss.second, 0);
 }
 
 TEST(YamlParsing, ArchetypeRecognition)
 {
 	std::vector<Archetype> historicArchetypes = std::vector<Archetype>();
-	std::vector<Archetype> newArchetypes = std::vector<Archetype>();
+	std::vector<Update> newUpdates = std::vector<Update>();
 
-	StateReader::ReadState(historicArchetypes, false, "F:\\Documents\\Personal Code Projects\\TIA_Automation\\Test_Archive.yml");
-	StateReader::ReadState(newArchetypes, true, "F:\\Documents\\Personal Code Projects\\TIA_Automation\\New_Archive.yml");
+	DataReader::ReadState(historicArchetypes, "F:\\Documents\\Personal Code Projects\\TIA_Automation\\Test_Archive.yml");
+	DataReader::ReadUpdateFile(newUpdates, "F:\\Documents\\Personal Code Projects\\TIA_Automation\\New_Archive.yml");
 
-	EXPECT_EQ(historicArchetypes[0].GetKey(), newArchetypes[0].GetKey());
-	EXPECT_EQ(historicArchetypes[1].GetKey(), newArchetypes[1].GetKey());
+	EXPECT_EQ(historicArchetypes[0].GetKey(), newUpdates[0].GetKey());
+	EXPECT_EQ(historicArchetypes[1].GetKey(), newUpdates[1].GetKey());
 }

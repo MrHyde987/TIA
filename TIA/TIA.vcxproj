@@ -152,19 +152,23 @@
     <ClCompile Include="Archetype.cpp" />
     <ClCompile Include="CardRecord.cpp" />
     <ClCompile Include="DeckList.cpp" />
-    <ClCompile Include="StateReader.cpp" />
+    <ClCompile Include="KeyGenerator.cpp" />
+    <ClCompile Include="DataReader.cpp" />
     <ClCompile Include="TIACalculator.cpp" />
     <ClCompile Include="TIAScore.cpp" />
     <ClCompile Include="TournamentRecord.cpp" />
+    <ClCompile Include="Update.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Archetype.h" />
     <ClInclude Include="CardRecord.h" />
     <ClInclude Include="DeckList.h" />
-    <ClInclude Include="StateReader.h" />
+    <ClInclude Include="KeyGenerator.h" />
+    <ClInclude Include="DataReader.h" />
     <ClInclude Include="TIACalculator.h" />
     <ClInclude Include="TIAScore.h" />
     <ClInclude Include="TournamentRecord.h" />
+    <ClInclude Include="Update.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

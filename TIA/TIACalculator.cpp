@@ -3,7 +3,7 @@
 TIACalculator::TIACalculator(const std::string historicDataLocation, const std::string newDataLocation)
 {
 	historicArchetypes = std::vector<Archetype>();
-	newArchetypeData = std::vector<Archetype>();
+	newArchetypeData = std::vector<Update>();
 	lScores = std::map<int, int>();
 	this->historicDataLocation = historicDataLocation;
 	this->newDataLocation = newDataLocation;
@@ -12,8 +12,10 @@ TIACalculator::TIACalculator(const std::string historicDataLocation, const std::
 void TIACalculator::ComputeTIA()
 {
 	// Read old TIA data
-	StateReader::ReadState(historicArchetypes, false, historicDataLocation);
+	DataReader::ReadState(historicArchetypes, historicDataLocation);
 
 	// Read new tournament data
-	StateReader::ReadState(newArchetypeData, true, newDataLocation);
+	DataReader::ReadUpdateFile(newArchetypeData, newDataLocation);
+
+	// TODO: The rest of it...
 }

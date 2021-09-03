@@ -22,11 +22,6 @@ private:
 	// Sum these numbers to get the archetype's current TIA score
 	std::vector<float>  tiaArchive;
 
-	static int keyCounter;
-	static std::unordered_map<std::string, int> nameIndex;
-
-	static int generateNewKey(std::string name);
-
 public:
 	Archetype();
 	
